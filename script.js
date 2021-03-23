@@ -1,18 +1,11 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-var str = "Hello World!";
-    
-// Splitting the string
-var chars = str.split("");
-    
-console.log(chars);
-
 // set arrays of possible values
 let charLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 let charUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 let charNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-let charSpec = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', "`", '{', '|', '}', '~', ']';
+let charSpec = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', "`", '{', '|', '}', '~'];
 
 // Write password to the #password input
 function writePassword() {
@@ -42,25 +35,33 @@ function writePassword() {
     // for (i=0, i<1)
       // prompt lowercase (Y or N)'
       if (prompt ('Use Lower Case letters (Y/N)?') === 'Y') {
-        alert ('great')
-      } else {
-        alert ('boo!')
-      }
+        passChar = passChar.concat(charLower);
+      } 
         // if invalid value, alert/prompt for valid value
         // if y, push upper case array to passChar
         // if y, add 1 to i
       // prompt uppercase (Y or N)
-      prompt ('Use Upper Case letters (Y/N)?')
+      if (prompt ('Use Upper Case letters (Y/N)?') === 'Y') {
+        passChar = passChar.concat(charUpper);
+      }
         // if invalid value, alert/prompt for valid value
         // if y, push uppercase array to passChar
         // if y, add 1 to i
       // prompt numbers (Y or N)
-      prompt ('Use Numbers (Y/N)?')
+      if (prompt ('Use Numbers (Y/N)?') === 'Y') {
+        passChar = passChar.concat(charNum);
+      }
         // if invalid value, alert/prompt for valid value
         // if y, push numbers array to passChar
         // if y, add 1 to i
       // prompt special characters (Y or N)
-      prompt ('Use Special Characters (Y/N)?')
+      // prompt ('Use Special Characters (Y/N)?')
+      if (prompt ('Use Special Characters (Y/N)?') === 'Y') {
+        passChar = passChar.concat(charSpec);
+      }
+
+      console.log(passChar)
+
         // if invalid value, alert/prompt for valid value
         // if y, push special characters array to passChar
         // if y, add 1 to i
