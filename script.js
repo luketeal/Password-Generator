@@ -14,10 +14,14 @@ function writePassword() {
 
   let passChar = [];
 
-  // for(i=0; i>=8 && i<=128;) {
-    // i = prompt('Password Length?')
-  // }
+  let passwordLength = prompt('Password Length?')
 
+  for(; passwordLength < 8 || passwordLength > 128;) {
+    passwordLength = prompt('Password Length?')
+  }
+
+
+  
   // Loop until full validated -
     // Validate that password length is between 8 and 128
     // let passworLength = 
@@ -28,7 +32,7 @@ function writePassword() {
         // if invalid value, alert/prompt for valid value
         // if valid, assign validated input to variable passLength
 
-  let passwordLength = prompt ('Password Length?')
+  // let passwordLength = prompt ('Password Length?')
 
   // Loop until fully validated - 
     // Validate that some type of character has been selected, if not, re-run questions
