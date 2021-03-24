@@ -14,13 +14,17 @@ function writePassword() {
 
   let passChar = [];
 
-  let passwordLength = prompt('Password Length?')
+  // let passwordLength 
 
-  for(; passwordLength < 8 || passwordLength > 128;) {
-    passwordLength = prompt('Password Length?')
+  // for(let i=0; i < 8 || i > 128 || Number.isInteger(i)===false; i = passwordLength) {
+  //   passwordLength = prompt('Password Length?')
+  // }
+
+  let passLength
+  while (passLength == null || passLength < 8 || passLength > 128 || !Number.isInteger(passLength)) {
+    const questionLength = passLength == null ? 'Password length?' : 'Invalid password length, please enter a value between 8 and 128'
+    passLength = parseFloat(prompt(questionLength, '8'))
   }
-
-
   
   // Loop until full validated -
     // Validate that password length is between 8 and 128
@@ -38,31 +42,59 @@ function writePassword() {
     // Validate that some type of character has been selected, if not, re-run questions
     // for (i=0, i<1)
       // prompt lowercase (Y or N)'
-      if (prompt ('Use Lower Case letters (Y/N)?') === 'Y') {
-        passChar = passChar.concat(charLower);
-      } 
+
+  let passLower
+  while (passLower == null || (passLower !== 'Y' && passLower !== 'N')) {
+    const questionLower = passLower == null ? 'Use Lower Case letters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Lower Case letters?'
+    passLower = prompt(questionLower, 'Y').toUpperCase()
+  }
+  
+      // if (prompt ('Use Lower Case letters (Y/N)?') === 'Y') {
+      //   passChar = passChar.concat(charLower);
+      // } 
+
         // if invalid value, alert/prompt for valid value
         // if y, push upper case array to passChar
         // if y, add 1 to i
       // prompt uppercase (Y or N)
-      if (prompt ('Use Upper Case letters (Y/N)?') === 'Y') {
-        passChar = passChar.concat(charUpper);
-      }
+
+  let passUpper
+  while (passUpper == null || (passUpper.toUpperCase() !== 'Y' && passUpper.toUpperCase() !== 'N')) {
+    const questionUpper = passUpper == null ? 'Use Upper Case letters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Upper Case letters?'
+    passUpper = prompt(questionUpper, 'Y')
+  }
+      // if (prompt ('Use Upper Case letters (Y/N)?') === 'Y') {
+      //   passChar = passChar.concat(charUpper);
+      // }
         // if invalid value, alert/prompt for valid value
         // if y, push uppercase array to passChar
         // if y, add 1 to i
       // prompt numbers (Y or N)
-      if (prompt ('Use Numbers (Y/N)?') === 'Y') {
-        passChar = passChar.concat(charNum);
-      }
+
+  let passNumber
+  while (passNumber == null || (passNumber.toUpperCase() !== 'Y' && passNumber.toUpperCase() !== 'N')) {
+    const questionNumber = passNumber == null ? 'Use Numbers (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Numbers?'
+    passNumber = prompt(questionNumber, 'Y')
+  }
+
+      // if (prompt ('Use Numbers (Y/N)?') === 'Y') {
+      //   passChar = passChar.concat(charNum);
+      // }
         // if invalid value, alert/prompt for valid value
         // if y, push numbers array to passChar
         // if y, add 1 to i
       // prompt special characters (Y or N)
       // prompt ('Use Special Characters (Y/N)?')
-      if (prompt ('Use Special Characters (Y/N)?') === 'Y') {
-        passChar = passChar.concat(charSpec);
+
+      let passSpecial
+      while (passSpecial == null || (passSpecial.toUpperCase() !== 'Y' && passSpecial.toUpperCase() !== 'N')) {
+        const questionSpecial = passSpecial == null ? 'Use Special Characters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Special Characters?'
+        passSpecial = prompt(questionSpecial, 'Y')
       }
+
+      // if (prompt ('Use Special Characters (Y/N)?') === 'Y') {
+      //   passChar = passChar.concat(charSpec);
+      // }
 
       console.log(passChar)
 
