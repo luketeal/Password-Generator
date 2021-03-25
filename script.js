@@ -15,22 +15,38 @@ function writePassword() {
 
   // Loops for password length until full validated -
   let passLength
+  let passLengthAnswer
   while (passLength == null || passLength < 8 || passLength > 128 || !Number.isInteger(passLength)) {
     const questionLength = passLength == null ? 'Password length?' : 'Invalid password length, please enter a value between 8 and 128'
-    passLength = parseFloat(prompt(questionLength, '8'))
-  }
-  
+    passLengthAnswer = prompt(questionLength, '8')
 
+    // break out of function if cancelled
+    if (passLengthAnswer === null) {
+      passLength = undefined
+      return;
+    } else {
+        passLength = parseFloat(passLengthAnswer)
+    }
+
+  }
 
   // Loops until at least one character type is input
   for (let i=0; i<1;) {
     
     // Loops until lowercase option is valid input - 
     let passLower
+    let passLowerAnswer
     while (passLower == null || (passLower !== 'Y' && passLower !== 'N')) {
       const questionLower = passLower == null ? 'Use Lower Case letters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Lower Case letters?'
-      passLower = prompt(questionLower, 'Y').toUpperCase()
+      passLowerAnswer = prompt(questionLower, 'Y')
       
+      // break out of function if cancelled
+      if (passLowerAnswer === null) {
+        return;
+      } else {
+          passLower = passLowerAnswer.toUpperCase()
+      }
+
       // if Y is chosen, increase i by 1 so the for loop knows that 
       // at least one character type is chosen and 
       // add lowercase characters to array of character options.
@@ -38,14 +54,23 @@ function writePassword() {
         i++;
         passChar = passChar.concat(charLower);
       }
+
     }
     
     // Loops until uppercase option is valid input - 
     let passUpper
+    let passUpperAnswer
     while (passUpper == null || (passUpper !== 'Y' && passUpper !== 'N')) {
       const questionUpper = passUpper == null ? 'Use Upper Case letters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Upper Case letters?'
-      passUpper = prompt(questionUpper, 'Y').toUpperCase()
+      passUpperAnswer = prompt(questionUpper, 'Y')
       
+      // break out of function if cancelled
+      if (passUpperAnswer === null) {
+        return;
+      } else {
+          passUpper = passUpperAnswer.toUpperCase()
+      }
+
       // if Y is chosen, increase i by 1 so the for loop knows that 
       // at least one character type is chosen and 
       // add uppercase characters to array of character options.
@@ -58,10 +83,18 @@ function writePassword() {
 
     // Loops until numbers option is valid input - 
     let passNumber
+    let passNumberAnswer
     while (passNumber == null || (passNumber !== 'Y' && passNumber !== 'N')) {
       const questionNumber = passNumber == null ? 'Use Numbers (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Numbers?'
-      passNumber = prompt(questionNumber, 'Y').toUpperCase()
+      passNumberAnswer = prompt(questionNumber, 'Y')
       
+      // break out of function if cancelled
+      if (passNumberAnswer === null) {
+        return;
+      } else {
+          passNumber = passNumberAnswer.toUpperCase()
+      }
+
       // if Y is chosen, increase i by 1 so the for loop knows that 
       // at least one character type is chosen and 
       // add numbers to array of character options.
@@ -74,10 +107,18 @@ function writePassword() {
 
       // Loops until special characters option is valid input - 
       let passSpecial
+      let passSpecialAnswer
       while (passSpecial == null || (passSpecial !== 'Y' && passSpecial !== 'N')) {
         const questionSpecial = passSpecial == null ? 'Use Special Characters (Y/N)?' : 'Invalid response, please enter "Y" for yes and "N" for No. \nUse Special Characters?'
-        passSpecial = prompt(questionSpecial, 'Y').toUpperCase()
+        passSpecialAnswer = prompt(questionSpecial, 'Y')
         
+        // break out of function if cancelled
+        if (passSpecialAnswer === null) {
+          return;
+        } else {
+            passSpecial = passSpecialAnswer.toUpperCase()
+        }
+
         // if Y is chosen, increase i by 1 so the for loop knows that 
         // at least one character type is chosen and 
         // add special characters to array of character options.
@@ -85,6 +126,7 @@ function writePassword() {
           i++;
           passChar = passChar.concat(charSpec);
         }
+        
       }
 
       // alert user they did not select any options and loops back to beginning of character type questions
@@ -107,6 +149,7 @@ function writePassword() {
     }
 
     return text;    
+    
   }
 
   const password = generatePassword();
