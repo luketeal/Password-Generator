@@ -22,7 +22,6 @@ function writePassword() {
 
     // break out of function if cancelled
     if (passLengthAnswer === null) {
-      passLength = undefined
       return;
     } else {
         passLength = parseFloat(passLengthAnswer)
