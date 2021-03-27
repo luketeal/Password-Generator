@@ -9,7 +9,7 @@ The repository includes
 
 * The [html](./index.html) code;
 * The [CSS](./assets/css/styles.css) code; 
-* The [JavaScript] (./assets/js/script.js); and
+* The [JavaScript](./assets/js/script.js); and
 * [GIF](./assets/images) of intended functionality.
 
 ## Objectives
